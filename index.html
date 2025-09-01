@@ -1,1 +1,249 @@
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capa de Vídeo Estilizada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        header {
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 360px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .thumbnail-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            height: 202px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .thumbnail-container:hover .thumbnail {
+            transform: scale(1.05);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 0, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            background: rgba(255, 0, 0, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .play-button::after {
+            content: '';
+            border-style: solid;
+            border-width: 15px 0 15px 26.0px;
+            border-color: transparent transparent transparent white;
+            margin-left: 5px;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .video-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+            max-width: 800px;
+        }
+        
+        .instructions h2 {
+            margin-bottom: 1rem;
+            color: #ff7e5f;
+        }
+        
+        .instructions ol {
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.8rem;
+        }
+        
+        code {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Capas de Vídeo Interativas</h1>
+            <p class="subtitle">Clique na capa para assistir ao vídeo no YouTube</p>
+        </header>
+        
+        <div class="video-container">
+            <div class="video-card">
+                <a href="https://youtu.be/v6wWUlXdEDU?si=5PvDwWLl-592IIfT" target="_blank" class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/v6wWUlXdEDU/maxresdefault.jpg" alt="Capa do vídeo" class="thumbnail">
+                    <div class="play-button"></div>
+                    <div class="video-duration">10:25</div>
+                </a>
+                <div class="video-info">
+                    <h3 class="video-title">Vídeo Exemplo no YouTube</h3>
+                    <p class="video-description">Esta é uma demonstração de como adicionar uma capa de vídeo com visual atrativo em seu site.</p>
+                </div>
+            </div>
+            
+            <div class="video-card">
+                <a href="https://youtu.be/v6wWUlXdEDU?si=5PvDwWLl-592IIfT" target="_blank" class="thumbnail-container">
+                    <img src="https://img.youtube.com/vi/v6wWUlXdEDU/hqdefault.jpg" alt="Capa alternativa" class="thumbnail">
+                    <div class="play-button"></div>
+                    <div class="video-duration">10:25</div>
+                </a>
+                <div class="video-info">
+                    <h3 class="video-title">Versão Alternativa</h3>
+                    <p class="video-description">O YouTube oferece diferentes qualidades de miniatura para seus vídeos.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h2>Como Adicionar a Capa de um Vídeo do YouTube</h2>
+            <ol>
+                <li>Obtenha o ID do vídeo do YouTube (ex: <code>v6wWUlXdEDU</code> da URL <code>https://youtu.be/v6wWUlXdEDU</code>)</li>
+                <li>Use o formato: <code>https://img.youtube.com/vi/VIDEO_ID/QUALIDADE.jpg</code></li>
+                <li>Substitua <code>QUALIDADE</code> por:
+                    <ul>
+                        <li><code>maxresdefault.jpg</code> - Maior resolução (1280x720)</li>
+                        <li><code>hqdefault.jpg</code> - Alta qualidade (480x360)</li>
+                        <li><code>mqdefault.jpg</code> - Qualidade média (320x180)</li>
+                        <li><code>sddefault.jpg</code> - Definição padrão (640x480)</li>
+                    </ul>
+                </li>
+                <li>Coloque a imagem dentro de um link apontando para o vídeo no YouTube</li>
+                <li>Adicione estilos CSS para melhorar a aparência e a interatividade</li>
+            </ol>
+        </div>
+        
+        <footer>
+            <p>Exemplo criado para demonstração • Usando a API de miniaturas do YouTube</p>
+        </footer>
+    </div>
+</body>
+</html>
