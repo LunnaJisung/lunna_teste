@@ -1,225 +1,234 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de robótica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Podcast with Han Jisung</title>
     <style>
-        body {
-            color: white;
-            background: black;
+        * {
             margin: 0;
-            font-family: "Chakra Petch", sans-serif;
-            margin-bottom: 100px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        header {
-            border-bottom: solid 2px rgb(42, 122, 228);
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e6e6e6;
+            line-height: 1.6;
             padding: 20px;
-            font-size: 32px;
-            color: rgb(42, 122, 228);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(30, 30, 50, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #4e4e8d;
+        }
+        
+        header {
             text-align: center;
-        }
-
-        .chamada {
-            background: rgb(223, 193, 255);
-            padding: 80px 5%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .chamada-texto {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-        }
-
-        h1 {
-            font-size: 40px;
-            color: #333;
-        } 
-
-        .chamada p {
-            font-size: 20px;
-            color: #444;
-        } 
-
-        .categoria {
-            padding: 20px 5%;
-            margin-top: 50px;
-        }
-
-        .categoria h2 {
-            color: rgb(42, 122, 228);
-            text-align: center;
-            font-size: 28px;
             margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4e4e8d;
         }
-
-        .categoria-videos {
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #ff7ee6;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 126, 230, 0.5);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #7ee0ff;
+            margin: 25px 0 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7ee0ff;
+            margin-bottom: 5px;
+        }
+        
+        .info {
             display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 10px 0;
-            scrollbar-width: thin;
-            scrollbar-color: rgb(42, 122, 228) #111;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
-
-        /* Personaliza a barra de rolagem para navegadores WebKit */
-        .categoria-videos::-webkit-scrollbar {
-            height: 8px;
+        
+        .info-item {
+            margin-right: 20px;
+            margin-bottom: 10px;
         }
-
-        .categoria-videos::-webkit-scrollbar-track {
-            background: #111;
+        
+        .host {
+            background: rgba(126, 224, 255, 0.1);
+            padding: 15px;
             border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #7ee0ff;
         }
-
-        .categoria-videos::-webkit-scrollbar-thumb {
-            background: rgb(42, 122, 228);
+        
+        .guest {
+            background: rgba(255, 126, 230, 0.1);
+            padding: 15px;
             border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff7ee6;
         }
-
-        .video-item {
-            position: relative;
-            flex: 0 0 auto;
-            width: 320px;
-            height: 180px;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        .question {
+            font-weight: bold;
+            color: #7ee0ff;
+            margin-bottom: 5px;
         }
-
-        .video-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(42, 122, 228, 0.7);
+        
+        .answer {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #e6e6e6;
         }
-
-        .video-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s ease;
+        
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 30px;
+            color: #ff7ee6;
         }
-
-        .video-item:hover img {
-            opacity: 0.8;
+        
+        .stray-logo {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2rem;
+            color: #ff7ee6;
         }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7ee0ff;
+            font-size: 0.9rem;
         }
-
-        .video-item:hover .play-overlay {
-            opacity: 1;
-        }
-
-        .play-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 0, 0, 0.8);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .play-icon::after {
-            content: '';
-            border-style: solid;
-            border-width: 10px 0 10px 16px;
-            border-color: transparent transparent transparent white;
-            margin-left: 4px;
-        }
-
+        
         @media (max-width: 768px) {
-            .chamada {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .info {
                 flex-direction: column;
-                text-align: center;
-            }
-            
-            .chamada-texto {
-                margin-right: 0;
-                margin-bottom: 30px;
-            }
-            
-            iframe {
-                width: 100%;
-                height: auto;
-                min-height: 250px;
             }
         }
     </style>
 </head>
 <body>
-   <header>Soluções Robóticas</header>
-   
-   <section class="chamada">
-        <div class="chamada-texto">
-            <h1>Trabalhando com Robótica Educacional</h1>
-            <p>#os melhores vídeos que podemos arrumar sobre robótica</p>
-            <p>FIQUE ATENTO PARA AS MODIFICAÇÕES</p>
+    <div class="container">
+        <header>
+            <h1>BEYOND THE STAGE</h1>
+            <p class="subtitle">A Podcast Exploring the Lives of Music Icons</p>
+        </header>
+        
+        <div class="info">
+            <div class="info-item"><strong>Course:</strong> English Communication</div>
+            <div class="info-item"><strong>Class:</strong> ___________________</div>
+            <div class="info-item"><strong>Subject:</strong> Creative Writing</div>
+            <div class="info-item"><strong>Date:</strong> September 2025</div>
         </div>
- 
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/qS7OsvKqojg?si=NuCNAyMA1DBL4ZuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+        
+        <div class="stray-logo">★ STRAY KIDS ★</div>
+        
+        <div class="host">
+            <strong>Host:</strong> Hello everyone, and welcome to another episode of "Beyond the Stage"! I'm your host, Alex, and today we have an incredibly special guest. He's a rapper, singer, songwriter, and producer from the globally renowned K-pop group Stray Kids. Please welcome the talented Han Jisung!
         </div>
-   </section>
-    
-    <section class="categoria">
-        <h2>O MELHOR DA ROBÓTICA ESTÁ AQUI</h2>
-        <div class="categoria-videos">
-            <!-- Vídeos corrigidos com IDs corretos -->
-            <a href="https://youtu.be/SE05iCw3qY8" class="video-item">
-                <img src="https://img.youtube.com/vi/SE05iCw3qY8/maxresdefault.jpg" alt="Robótica Educacional"/>
-                <div class="play-overlay">
-                    <div class="play-icon"></div>
-                </div>
-            </a>
-            
-            <a href="https://youtu.be/v6wWUlXdEDU" class="video-item">
-                <img src="https://img.youtube.com/vi/v6wWUlXdEDU/maxresdefault.jpg" alt="Soluções em Robótica"/>
-                <div class="play-overlay">
-                    <div class="play-icon"></div>
-                </div>
-            </a>
-            
-            <a href="https://www.youtube.com/watch?v=FvRmEapoHRc" class="video-item">
-                <img src="https://img.youtube.com/vi/FvRmEapoHRc/maxresdefault.jpg" alt="Inovação em Robótica"/>
-                <div class="play-overlay">
-                    <div class="play-icon"></div>
-                </div>
-            </a>
-            
-            <a href="https://www.youtube.com/watch?v=lpkw_hWW-Hw" class="video-item">
-                <img src="https://img.youtube.com/vi/lpkw_hWW-Hw/maxresdefault.jpg" alt="Tecnologia Robótica"/>
-                <div class="play-overlay">
-                    <div class="play-icon"></div>
-                </div>
-            </a>
-            
-            <a href="https://www.youtube.com/watch?v=d4DzMNGoyis" class="video-item">
-                <img src="https://img.youtube.com/vi/d4DzMNGoyis/maxresdefault.jpg" alt="Futuro da Robótica"/>
-                <div class="play-overlay">
-                    <div class="play-icon"></div>
-                </div>
-            </a>
+        
+        <div class="guest">
+            <strong>Han Jisung:</strong> Hello! Thank you for having me. It's great to be here.
         </div>
-    </section>
-    
+        
+        <h2>THE INTERVIEW</h2>
+        
+        <div class="question">Can you tell us a little about your childhood?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> I grew up in Incheon, South Korea. As a child, I was always energetic and loved performing for my family. I started dreaming about music at a very young age. My parents were very supportive of my interests, which helped me pursue my passion.
+        </div>
+        
+        <div class="question">What inspired you to become who you are today?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> I've always been inspired by different genres of music. As I grew older, I discovered hip-hop and was drawn to the storytelling aspect of rap. The ability to express deep emotions and personal experiences through lyrics really resonated with me. Also, my fellow Stray Kids members inspire me every day to grow as an artist.
+        </div>
+        
+        <div class="question">What has been the most difficult moment in your life?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> There was a time when I experienced extreme anxiety and had to take a break from activities. It was challenging because I wanted to be there for the group and our fans, but I needed to prioritize my mental health. That period taught me the importance of self-care and that it's okay to ask for help when you need it.
+        </div>
+        
+        <div class="question">If you could change one thing about your past, what would it be?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> I don't think I would change anything because every experience, good or bad, has shaped who I am today. But if I had to choose, I would tell my younger self to worry less about what others think and to have more confidence in my abilities.
+        </div>
+        
+        <div class="question">What is a normal day like in your life?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> When we're not promoting, a normal day usually starts with vocal practice and dance rehearsal. I spend a lot of time in the studio working on new music—writing lyrics or composing. I also make time to play with my dogs and video call my family. Of course, I always check in with STAYs on Bubble!
+        </div>
+        
+        <div class="question">What are your biggest strengths and weaknesses?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> I think my biggest strength is my creativity when it comes to songwriting. I can usually channel my emotions into music quite well. As for weaknesses, I tend to be too hard on myself sometimes and overthink things. I'm learning to be kinder to myself.
+        </div>
+        
+        <div class="question">Who do you admire or look up to, and why?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> I really admire our leader Bang Chan. He's not only incredibly talented but also one of the most caring and hardworking people I know. He always puts the members first and has taught me a lot about leadership and responsibility.
+        </div>
+        
+        <div class="question">What is one thing most people don't know about you?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> Many people don't know that I'm actually quite shy when I first meet someone. On stage, I'm confident and energetic, but in new social situations, it takes me a while to open up.
+        </div>
+        
+        <div class="question">If you could live in another time or place, where would it be?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> That's an interesting question! I think I would like to experience the 90s hip-hop scene in New York. That era had such a raw energy and creativity that really influenced the music we make today.
+        </div>
+        
+        <div class="question">What message would you like to leave for your fans or listeners?</div>
+        <div class="answer">
+            <strong>Han Jisung:</strong> To STAYs and everyone listening—thank you for your endless support. Please remember that it's okay to not be okay sometimes. We all have struggles, but you're never alone. Keep going and never give up on your dreams. I'll keep working hard to bring you music that can comfort and inspire you.
+        </div>
+        
+        <div class="host">
+            <strong>Host:</strong> Thank you so much, Han Jisung, for sharing so openly with us today. It's been an absolute pleasure having you on the show.
+        </div>
+        
+        <div class="guest">
+            <strong>Han Jisung:</strong> Thank you for having me. It was fun!
+        </div>
+        
+        <div class="signature">
+            <p>Podcast Script created by: ___________________</p>
+            <p>Date: September 12, 2025</p>
+        </div>
+        
+        <div class="footer">
+            <p>STRAY KIDS EVERYWHERE ALL AROUND THE WORLD</p>
+            <p>YOU MAKE STRAY KIDS STAY</p>
+        </div>
+    </div>
 </body>
 </html>
