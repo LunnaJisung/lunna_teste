@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast with Han Jisung</title>
+    <title>Geladinho Delícia - Geladinhos Gourmet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset e estilos globais */
         * {
             margin: 0;
             padding: 0;
@@ -12,223 +14,531 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        :root {
+            --primary: #FF6B8B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #1A535C;
+            --light: #F7FFF7;
+        }
+        
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e6e6e6;
+            background-color: var(--light);
+            color: #333;
             line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
         }
         
         .container {
-            max-width: 900px;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(30, 30, 50, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid #4e4e8d;
+            padding: 0 15px;
         }
         
+        /* Header e navegação */
         header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #4e4e8d;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            color: #ff7ee6;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 126, 230, 0.5);
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            color: #7ee0ff;
-            margin: 25px 0 15px;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #7ee0ff;
-            margin-bottom: 5px;
-        }
-        
-        .info {
+        .navbar {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--dark);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 83, 92, 0.7), rgba(26, 83, 92, 0.7)), url('https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1186&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        .info-item {
-            margin-right: 20px;
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #ff4d73;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Seções */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Produtos */
+        .products {
+            background-color: #f9f9f9;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 22px;
             margin-bottom: 10px;
+            color: var(--dark);
         }
         
-        .host {
-            background: rgba(126, 224, 255, 0.1);
-            padding: 15px;
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Sobre */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Contato */
+        .contact {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .contact .section-title h2 {
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
-            border-left: 4px solid #7ee0ff;
         }
         
-        .guest {
-            background: rgba(255, 126, 230, 0.1);
-            padding: 15px;
-            border-radius: 10px;
+        .contact-item i {
+            font-size: 20px;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
             margin-bottom: 15px;
-            border-left: 4px solid #ff7ee6;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
         }
         
-        .question {
-            font-weight: bold;
-            color: #7ee0ff;
-            margin-bottom: 5px;
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
         
-        .answer {
-            margin-left: 20px;
-            margin-bottom: 15px;
-            color: #e6e6e6;
-        }
-        
-        .signature {
-            text-align: right;
-            font-style: italic;
-            margin-top: 30px;
-            color: #ff7ee6;
-        }
-        
-        .stray-logo {
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
             text-align: center;
-            margin: 20px 0;
-            font-size: 2rem;
-            color: #ff7ee6;
         }
         
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #7ee0ff;
-            font-size: 0.9rem;
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
         
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsividade */
         @media (max-width: 768px) {
-            .container {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 padding: 20px;
             }
             
-            h1 {
-                font-size: 2rem;
+            .nav-links.active {
+                display: flex;
             }
             
-            h2 {
-                font-size: 1.5rem;
+            .mobile-menu {
+                display: block;
             }
             
-            .info {
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .about-content {
                 flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>BEYOND THE STAGE</h1>
-            <p class="subtitle">A Podcast Exploring the Lives of Music Icons</p>
-        </header>
-        
-        <div class="info">
-            <div class="info-item"><strong>Course:</strong> English Communication</div>
-            <div class="info-item"><strong>Class:</strong> ___________________</div>
-            <div class="info-item"><strong>Subject:</strong> Creative Writing</div>
-            <div class="info-item"><strong>Date:</strong> September 2025</div>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-ice-cream"></i>
+                    <h1>Geladinho Delícia</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
-        
-        <div class="stray-logo">★ STRAY KIDS ★</div>
-        
-        <div class="host">
-            <strong>Host:</strong> Hello everyone, and welcome to another episode of "Beyond the Stage"! I'm your host, Alex, and today we have an incredibly special guest. He's a rapper, singer, songwriter, and producer from the globally renowned K-pop group Stray Kids. Please welcome the talented Han Jisung!
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Os Melhores Geladinhos Gourmet da Cidade!</h2>
+            <p>Sabores incríveis, ingredientes naturais e muito sabor em cada mordida. Experimente nossa linha premium de geladinhos artesanais.</p>
+            <a href="produtos.html" class="btn">Ver Produtos</a>
         </div>
-        
-        <div class="guest">
-            <strong>Han Jisung:</strong> Hello! Thank you for having me. It's great to be here.
+    </section>
+
+    <!-- Produtos -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Produtos</h2>
+                <p>Conheça nossa linha de geladinhos gourmet</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #FF9AA2;">
+                        <i class="fas fa-stroopwafel"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Geladinho Tradicional</h3>
+                        <p>Nosso clássico geladinho com sabores frutados e textura cremosa.</p>
+                        <div class="price">R$ 2,50</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #FFB7B2;">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Geladinho Premium</h3>
+                        <p>Ingredientes selecionados e combinações exclusivas de sabores.</p>
+                        <div class="price">R$ 4,00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #FFDAC1;">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Geladinho Zero Açúcar</h3>
+                        <p>Para quem busca uma opção mais saudável, sem abrir mão do sabor.</p>
+                        <div class="price">R$ 3,50</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #E2F0CB;">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Kit Festa</h3>
+                        <p>Pacote especial para festas e eventos com variedade de sabores.</p>
+                        <div class="price">R$ 25,00</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <h2>THE INTERVIEW</h2>
-        
-        <div class="question">Can you tell us a little about your childhood?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> I grew up in Incheon, South Korea. As a child, I was always energetic and loved performing for my family. I started dreaming about music at a very young age. My parents were very supportive of my interests, which helped me pursue my passion.
+    </section>
+
+    <!-- Sobre -->
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça a história da Geladinho Delícia</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Nossa História</h3>
+                    <p>A Geladinho Delícia nasceu do sonho de trazer alegria e sabor para o dia a dia das pessoas através de geladinhos gourmet. Começamos como um pequeno negócio familiar e hoje somos referência em qualidade e inovação.</p>
+                    <p>Nossos produtos são feitos com ingredientes 100% naturais, sem conservantes ou corantes artificiais. Cada geladinho é preparado com carinho e atenção aos detalhes, garantindo uma experiência única a cada mordida.</p>
+                    <a href="sobre.html" class="btn">Saiba Mais</a>
+                </div>
+                <div class="about-image">
+                    <!-- Imagem ilustrativa -->
+                    <div style="height: 300px; background: linear-gradient(45deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                        Imagem da Nossa Equipe
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="question">What inspired you to become who you are today?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> I've always been inspired by different genres of music. As I grew older, I discovered hip-hop and was drawn to the storytelling aspect of rap. The ability to express deep emotions and personal experiences through lyrics really resonated with me. Also, my fellow Stray Kids members inspire me every day to grow as an artist.
+    </section>
+
+    <!-- Contato -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Tire suas dúvidas ou faça seu pedido</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Rua dos Geladinhos, 123 - Centro, São Paulo - SP</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(11) 9999-9999</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contato@geladinhodelicia.com.br</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Segunda a Sábado: 9h às 18h</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="email" placeholder="Seu E-mail" required>
+                        <input type="tel" placeholder="Seu Telefone">
+                        <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        
-        <div class="question">What has been the most difficult moment in your life?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> There was a time when I experienced extreme anxiety and had to take a break from activities. It was challenging because I wanted to be there for the group and our fans, but I needed to prioritize my mental health. That period taught me the importance of self-care and that it's okay to ask for help when you need it.
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-ice-cream"></i>
+                    <h1>Geladinho Delícia</h1>
+                </div>
+                <p>&copy; 2023 Geladinho Delícia. Todos os direitos reservados.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
         </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
         
-        <div class="question">If you could change one thing about your past, what would it be?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> I don't think I would change anything because every experience, good or bad, has shaped who I am today. But if I had to choose, I would tell my younger self to worry less about what others think and to have more confidence in my abilities.
-        </div>
-        
-        <div class="question">What is a normal day like in your life?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> When we're not promoting, a normal day usually starts with vocal practice and dance rehearsal. I spend a lot of time in the studio working on new music—writing lyrics or composing. I also make time to play with my dogs and video call my family. Of course, I always check in with STAYs on Bubble!
-        </div>
-        
-        <div class="question">What are your biggest strengths and weaknesses?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> I think my biggest strength is my creativity when it comes to songwriting. I can usually channel my emotions into music quite well. As for weaknesses, I tend to be too hard on myself sometimes and overthink things. I'm learning to be kinder to myself.
-        </div>
-        
-        <div class="question">Who do you admire or look up to, and why?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> I really admire our leader Bang Chan. He's not only incredibly talented but also one of the most caring and hardworking people I know. He always puts the members first and has taught me a lot about leadership and responsibility.
-        </div>
-        
-        <div class="question">What is one thing most people don't know about you?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> Many people don't know that I'm actually quite shy when I first meet someone. On stage, I'm confident and energetic, but in new social situations, it takes me a while to open up.
-        </div>
-        
-        <div class="question">If you could live in another time or place, where would it be?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> That's an interesting question! I think I would like to experience the 90s hip-hop scene in New York. That era had such a raw energy and creativity that really influenced the music we make today.
-        </div>
-        
-        <div class="question">What message would you like to leave for your fans or listeners?</div>
-        <div class="answer">
-            <strong>Han Jisung:</strong> To STAYs and everyone listening—thank you for your endless support. Please remember that it's okay to not be okay sometimes. We all have struggles, but you're never alone. Keep going and never give up on your dreams. I'll keep working hard to bring you music that can comfort and inspire you.
-        </div>
-        
-        <div class="host">
-            <strong>Host:</strong> Thank you so much, Han Jisung, for sharing so openly with us today. It's been an absolute pleasure having you on the show.
-        </div>
-        
-        <div class="guest">
-            <strong>Han Jisung:</strong> Thank you for having me. It was fun!
-        </div>
-        
-        <div class="signature">
-            <p>Podcast Script created by: ___________________</p>
-            <p>Date: September 12, 2025</p>
-        </div>
-        
-        <div class="footer">
-            <p>STRAY KIDS EVERYWHERE ALL AROUND THE WORLD</p>
-            <p>YOU MAKE STRAY KIDS STAY</p>
-        </div>
-    </div>
+        // Animação simples ao rolar a página
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('header');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
 </body>
 </html>
